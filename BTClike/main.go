@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"crypto/sha256"
-	"fmt"
 	"time"
 )
 
@@ -15,6 +14,15 @@ type blockmain struct {
 	date          []byte //交易内容
 }
 
+/*
+func calculateHash(block Block) string {
+	record := string(block.Index) + b.date + b.LastBlockHash
+	h := sha256.New()
+	h.Write([]byte(record))
+	hashed := h.Sum(nil)
+	return hex.EncodeToString(hashed)
+}
+*/
 //用父哈希等算出来当前哈希，向下运行时的扣子。
 func (b *blockmain) SetBlockHash() {
 	//根据当前时间生成[]byte，然后用sha256加密一下。
@@ -55,9 +63,13 @@ func firstblock() *blockmain {
 
 //将创世区块与后续的区块连起来,实现链
 //区块链的链，是区块这个struct类型的指针的数组
+
 type BlockMainChain struct {
 	blocks []*blockmain
 }
+
+//链本身是一个sliceBlock
+//var Blockchain []blockmain
 
 /*开始创世还用这个方法把数据写到链上去
 func NewBlockchain() *Blockchain {
@@ -92,7 +104,7 @@ func (Chain *BlockMainChain) AddBlock(data string) {
 
 //func SetNowBlock(date string, LastBlockHash []byte) *blockmain
 //SetNowBlock()将交易内容（date）和LastBlockHash写入当前的区块。
-
+/*
 func main() {
 	var bmc BlockMainChain
 	firstblock()       //创造创世区块
@@ -114,3 +126,4 @@ func main() {
 }
 
 //跑不动，不知道为什么。
+*/
