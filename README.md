@@ -47,5 +47,3 @@ func (Chain *BlockMainChain) AddBlock(data string) {
 }
 ```
 这里的数组，会依次增加，每一个元素都来自于区块。
-
-**git** init https://github.com/vski5/glowing-broccoli.git
